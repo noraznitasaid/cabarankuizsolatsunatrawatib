@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071a2e">
+<title>Explorace Fiqah | P19</title>
+<style>
+:root{--navy:#071a2e;--navy2:#102b46;--gold:#e4bd59;--green:#15966a;--mint:#b8f3d7;--white:#f5f7fb;--muted:#aebfd0;--panel:#10253b;--line:#29445e;--red:#ff8d8d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0%,#173b53 0,#071a2e 42%,#04111f 100%);color:var(--white);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+.wrap{max-width:960px;margin:auto;padding:18px}.top{display:flex;align-items:center;gap:14px;margin:8px 0 20px}.crest{width:54px;height:54px;border-radius:17px;background:linear-gradient(135deg,var(--gold),#fff0b4);color:#10243a;display:grid;place-items:center;font-size:26px;box-shadow:0 8px 24px #0004}.eyebrow{color:var(--gold);font-size:.76rem;letter-spacing:.15em;font-weight:800}.top h1{font-size:clamp(1.4rem,4vw,2.1rem);line-height:1.1;margin:4px 0}.sub{color:var(--muted);font-size:.92rem}.pill{border:1px solid #45647e;color:var(--mint);padding:6px 10px;border-radius:99px;font-size:.78rem;white-space:nowrap}
+.hero,.panel,.station{background:linear-gradient(145deg,#122c45ed,#0c2034ed);border:1px solid var(--line);border-radius:22px;box-shadow:0 14px 38px #0002}.hero{padding:clamp(20px,4vw,34px);position:relative;overflow:hidden}.hero:after{content:"✦";position:absolute;right:22px;top:10px;font-size:100px;color:#e4bd5918}.hero h2{font-size:clamp(1.55rem,5vw,2.8rem);line-height:1.08;margin:12px 0}.hero p{max-width:650px;color:#c5d4e0;line-height:1.65}.gold{color:var(--gold)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.stat{padding:14px;border:1px solid var(--line);border-radius:15px;background:#071a2e80}.stat strong{display:block;font-size:1.35rem;color:var(--gold)}.stat span{font-size:.78rem;color:var(--muted)}
+.btn{border:0;border-radius:12px;padding:13px 17px;background:linear-gradient(135deg,var(--gold),#f6d982);color:#12243a;font-weight:800;cursor:pointer;font-size:.95rem;transition:.15s}.btn:hover{filter:brightness(1.07);transform:translateY(-1px)}.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}.btn.secondary{background:#183a56;color:var(--white);border:1px solid #42627a}.btn.green{background:linear-gradient(135deg,#0f9e6c,#7be2b0);color:#062a20}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.section-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:24px 0 12px}.section-title h3{margin:0;font-size:1.15rem}.map{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.station{padding:14px 10px;text-align:center;position:relative;min-height:128px}.station .num{width:38px;height:38px;border-radius:13px;margin:0 auto 8px;display:grid;place-items:center;background:#203e56;color:var(--gold);font-weight:900;border:1px solid #42627a}.station h4{margin:5px 0;font-size:.86rem}.station small{color:var(--muted);font-size:.73rem}.station.done{border-color:var(--green);background:linear-gradient(145deg,#0e473a,#102d3e)}.station.done .num{background:var(--green);color:white}.station.active{border-color:var(--gold);box-shadow:0 0 0 2px #e4bd5920}.station.locked{opacity:.55}.panel{padding:clamp(18px,4vw,28px);margin-top:18px}.hidden{display:none!important}.progress-row{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:.86rem;margin:12px 0 8px}.bar{height:8px;border-radius:99px;background:#263d52;overflow:hidden}.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--gold));transition:width .25s}.qmeta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.tag{font-size:.75rem;font-weight:800;color:var(--mint);background:#164a42;border:1px solid #267e68;padding:6px 10px;border-radius:99px}.question{font-size:clamp(1.1rem,3.3vw,1.45rem);line-height:1.45;margin:20px 0}.answers{display:grid;gap:10px}.answer{display:flex;align-items:flex-start;gap:11px;text-align:left;width:100%;border:1px solid #35516a;background:#0a1d30;color:var(--white);border-radius:14px;padding:14px;cursor:pointer;font-size:.97rem;line-height:1.45}.answer .letter{flex:0 0 28px;height:28px;border-radius:9px;display:grid;place-items:center;background:#1d3a53;color:var(--gold);font-weight:900}.answer.selected{border-color:var(--gold);background:#26394a}.answer.correct{border-color:#25bd83;background:#104638}.answer.wrong{border-color:#ff8d8d;background:#492b36}.answer:disabled{cursor:default}.field{width:100%;padding:15px;border-radius:12px;border:1px solid #45647e;background:#071a2e;color:white;font-size:1rem;outline:none}.field:focus{border-color:var(--gold);box-shadow:0 0 0 3px #e4bd5920}.feedback{margin-top:16px;padding:14px;border-radius:13px;line-height:1.5}.feedback.ok{background:#104638;border:1px solid #25bd83}.feedback.no{background:#452b35;border:1px solid #a95667}.feedback strong{display:block;margin-bottom:4px}.result{text-align:center;padding:16px}.medal{font-size:68px}.result h2{font-size:2.1rem;margin:8px}.scorebig{font-size:3.5rem;color:var(--gold);font-weight:900}.review{display:grid;gap:9px;margin-top:18px;text-align:left}.reviewitem{padding:12px;border:1px solid var(--line);border-radius:12px;background:#091c2d}.reviewitem small{color:var(--muted)}footer{text-align:center;color:#8097aa;font-size:.78rem;padding:28px 8px 12px;line-height:1.6}
+@media(max-width:650px){.wrap{padding:12px}.top{align-items:flex-start}.pill{display:none}.map{grid-template-columns:repeat(2,1fr)}.station:last-child{grid-column:span 2}.stats{gap:7px}.stat{padding:11px}.stat strong{font-size:1.15rem}.actions .btn{flex:1}.hero:after{font-size:70px;right:8px}}
+@media(min-width:651px) and (max-width:850px){.map{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="crest">✦</div><div style="flex:1"><div class="eyebrow">PENGEMBARAAN ILMU • BIDANG FIQAH</div><h1>EXPLORACE <span class="gold">FIQAH</span></h1><div class="sub">P19 · Solat Sunat Menampung Kefardhuan</div></div><div class="pill">TINGKATAN 2</div></header>
+<main id="home">
+<section class="hero"><div class="eyebrow">MISI PEMBUKAAN • 5 STESEN</div><h2>Adakah anda bersedia menjadi <span class="gold">Master Fiqah?</span></h2><p>Jelajahi lima stesen cabaran, jawab 30 soalan dan kumpulkan markah untuk membuka peti ilmu. Setiap jawapan membawa anda lebih dekat kepada gelaran Penjelajah Fiqah.</p><div class="stats"><div class="stat"><strong>30</strong><span>Cabaran keseluruhan</span></div><div class="stat"><strong>5</strong><span>Stesen misi</span></div><div class="stat"><strong>30</strong><span>Markah maksimum</span></div></div><div class="panel" style="margin:20px 0 0;padding:18px;background:#0a1d30">
+<label for="studentName" style="display:block;font-weight:800;margin-bottom:7px">Nama murid</label>
+<input class="field" id="studentName" placeholder="Masukkan nama penuh" autocomplete="name">
+<label for="studentClass" style="display:block;font-weight:800;margin:14px 0 7px">Kelas</label>
+<select class="field" id="studentClass">
+<option value="">Pilih kelas Tingkatan 2</option>
+<option>2 Arif</option><option>2 Bestari</option><option>2 Cemerlang</option><option>2 Dinamik</option><option>2 Elit</option><option>2 Fikrah</option><option>2 Gemilang</option><option>2 Harmoni</option><option>2 Intelek</option><option>2 KAA1</option><option>2 KAA2</option>
+</select>
+<div class="sub" style="margin-top:8px">Markah dihantar ke Google Sheets selepas murid menamatkan misi, jika pautan sistem guru telah disediakan.</div>
+<div class="actions"><button class="btn" onclick="beginFromForm()">🚀 Mulakan Misi</button><button class="btn secondary" onclick="showRules()">📜 Cara Bermain</button></div>
+</div>
+<div class="feedback hidden" id="setupNotice" style="background:#0a1d30;border:1px solid #35516a"></div><div id="rules" class="feedback hidden" style="background:#0a1d30;border:1px solid #35516a"><strong>Cara bermain</strong>• Jawab 20 soalan objektif dan 10 soalan isi tempat kosong.<br>• Setiap jawapan betul mendapat 1 markah.<br>• Jawapan disemak sebelum anda bergerak ke soalan seterusnya.<br>• Selesaikan satu stesen untuk membuka stesen berikutnya.<br>• Jawab berdasarkan pembelajaran tajuk ini.</div></section>
+<section class="section-title"><h3>🗺️ Peta Misi</h3><span class="sub">Selesaikan mengikut turutan</span></section>
+<div class="map" id="homeMap"></div>
+</main>
+<main id="game" class="hidden">
+<div class="section-title"><h3 id="stationHeading">Stesen 1</h3><span class="pill" id="scorePill">Markah: 0</span></div>
+<div class="progress-row"><span id="progressText">Soalan 1 daripada 30</span><span id="progressPct">3%</span></div><div class="bar"><span id="progressBar"></span></div>
+<section class="panel">
+<div class="qmeta"><span class="tag" id="typeTag">OBJEKTIF</span><span class="sub" id="stationCount">Stesen 1 · 1/6</span></div>
+<div class="question" id="questionText"></div>
+<div id="answerArea"></div>
+<div id="feedback" class="feedback hidden"></div>
+<div class="actions"><button id="checkBtn" class="btn" onclick="checkAnswer()" disabled>Semak Jawapan</button><button id="nextBtn" class="btn green hidden" onclick="nextQuestion()">Soalan Seterusnya →</button></div>
+</section>
+<section class="section-title"><h3>🧭 Kemajuan Pengembaraan</h3></section><div class="map" id="gameMap"></div>
+</main>
+<main id="results" class="hidden">
+<section class="panel result"><div class="medal" id="medal">🏆</div><div class="eyebrow">MISI SELESAI</div><h2 id="rankTitle">Master Fiqah</h2><div class="scorebig" id="finalScore">0/30</div><div class="sub" id="percentText">0% ketepatan</div><p id="resultMessage"></p><div class="bar"><span id="finalBar"></span></div><div id="submitStatus" class="feedback hidden"></div>
+<div class="actions" style="justify-content:center"><button class="btn" onclick="restart()">↻ Main Semula</button><button class="btn secondary" onclick="window.print()">Cetak Keputusan</button></div></section>
+<section class="section-title"><h3>📋 Semakan Jawapan</h3><span class="sub">Ulang kaji selepas misi</span></section><div class="review" id="review"></div>
+</main>
+<footer>EXPLORACE FIQAH · P19 · Pendidikan Islam Tingkatan 2<br>Disediakan berdasarkan nota PDF “Solat Sunat Menampung Kefardhuan”.</footer>
+</div>
+<script>
+const stations=[
+{name:"Gerbang Ilmu",icon:"🔑",desc:"Pengertian solat sunat",start:0,end:5},
+{name:"Laluan Rawatib",icon:"🧭",desc:"Qabliah, ba'diah dan bacaan",start:6,end:11},
+{name:"Cabaran Ramadan",icon:"🌙",desc:"Solat Tarawih",start:12,end:17},
+{name:"Rahsia Witir",icon:"✨",desc:"Rakaat, waktu dan qunut",start:18,end:23},
+{name:"Harta Hikmah",icon:"🏆",desc:"Lengkapkan hikmah solat sunat",start:24,end:29}
+];
+const questions=[
+{t:"o",s:0,q:"Apakah maksud solat sunat rawatib?",o:["Solat sunat yang mengiringi solat fardhu","Solat sunat pada hari raya","Solat sunat ketika gerhana","Solat sunat selepas Subuh sahaja"],a:0,e:"Solat rawatib mengiringi solat fardhu dan waktunya mengikut waktu solat fardhu."},
+{t:"o",s:0,q:"Solat sunat yang menghidupkan malam Ramadan ialah ...",o:["Solat Witir","Solat Tarawih","Solat Istikharah","Solat Dhuha"],a:1,e:"Solat Tarawih menghidupkan malam Ramadan."},
+{t:"o",s:0,q:"Apakah fungsi solat sunat Witir?",o:["Menggantikan solat Isyak","Menutup solat malam","Mengiringi solat Jumaat","Dilakukan sebelum berbuka"],a:1,e:"Solat Witir dilaksanakan sebagai penutup solat malam."},
+{t:"o",s:0,q:"Rawatib qabliah dilakukan ...",o:["Selepas solat fardhu","Sebelum solat fardhu","Selepas tengah malam sahaja","Selepas solat Witir sahaja"],a:1,e:"Qabliah ialah solat sunat sebelum solat fardhu."},
+{t:"o",s:0,q:"Rawatib ba'diah dilakukan ...",o:["Sebelum solat fardhu","Selepas solat fardhu","Sebelum masuk waktu solat","Ketika azan sahaja"],a:1,e:"Ba'diah ialah solat sunat selepas solat fardhu."},
+{t:"o",s:0,q:"Berapakah bilangan rakaat solat rawatib yang boleh dilakukan dengan satu salam?",o:["1 rakaat","2 rakaat","3 rakaat","5 rakaat"],a:1,e:"Solat rawatib boleh dilakukan 2 rakaat dengan satu salam atau 4 rakaat dengan dua salam."},
+{t:"o",s:1,q:"Bagaimanakah solat sunat rawatib dilaksanakan?",o:["Berjemaah sahaja","Secara bersendirian","Secara bergilir-gilir","Berjemaah di masjid sahaja"],a:1,e:"Solat sunat rawatib dilakukan secara bersendirian."},
+{t:"o",s:1,q:"Surah apakah yang dibaca pada rakaat pertama solat rawatib Subuh dan Isyak?",o:["Al-Ikhlas","Al-Falaq","Al-Kafirun","An-Nas"],a:2,e:"Rakaat pertama: surah al-Kafirun."},
+{t:"o",s:1,q:"Surah apakah yang dibaca pada rakaat kedua solat rawatib Subuh dan Isyak?",o:["Al-Ikhlas","Al-A'la","Al-Kafirun","Al-Falaq"],a:0,e:"Rakaat kedua: surah al-Ikhlas."},
+{t:"o",s:1,q:"Berapakah bilangan rakaat solat Tarawih yang boleh dilakukan?",o:["4 rakaat sahaja","6 rakaat sahaja","20 rakaat, tetapi boleh 8 mengikut kemampuan","11 rakaat sahaja"],a:2,e:"Solat Tarawih boleh dilakukan 20 rakaat atau 8 rakaat mengikut kemampuan."},
+{t:"o",s:1,q:"Bilakah waktu pelaksanaan solat Tarawih?",o:["Sebelum Maghrib","Antara Isyak dan Subuh sebelum Witir","Selepas Subuh","Sebelum Isyak"],a:1,e:"Tarawih dilakukan antara Isyak dan Subuh, sebelum Witir pada malam Ramadan."},
+{t:"o",s:1,q:"Solat Tarawih boleh dilakukan ...",o:["Bersendirian atau berjemaah","Bersendirian sahaja","Berjemaah sahaja","Ketika solat Jumaat sahaja"],a:0,e:"Kedua-dua cara dinyatakan dalam nota."},
+{t:"o",s:2,q:"Apakah yang sebaik-baiknya cuba dilakukan oleh imam ketika Tarawih?",o:["Menghabiskan satu juzuk sahaja","Mengkhatamkan al-Quran dalam masa sebulan","Membaca surah yang sama setiap rakaat","Tidak membaca surah selepas al-Fatihah"],a:1,e:"Nota menyatakan imam sebaik-baiknya cuba mengkhatamkan al-Quran dalam masa sebulan."},
+{t:"o",s:2,q:"Solat Witir dilakukan dalam bilangan rakaat ...",o:["Genap","Ganjil","Dua sahaja","Empat sahaja"],a:1,e:"Solat Witir dilaksanakan dalam bilangan ganjil."},
+{t:"o",s:2,q:"Apakah julat bilangan rakaat solat Witir?",o:["1 hingga 5 rakaat","2 hingga 8 rakaat","3 hingga 11 rakaat","4 hingga 12 rakaat"],a:2,e:"Solat Witir boleh dilakukan 3 hingga 11 rakaat."},
+{t:"o",s:2,q:"Apakah hukum melaksanakan solat Witir satu rakaat?",o:["Wajib","Sunat muakkad","Makruh","Haram"],a:2,e:"Melaksanakan solat Witir satu rakaat adalah makruh."},
+{t:"o",s:2,q:"Bilakah waktu solat Witir?",o:["Selepas Isyak dan solat sunat lain sebelum fajar","Selepas matahari terbit","Sebelum Maghrib","Selepas solat Subuh"],a:0,e:"Witir dilakukan pada waktu malam sebelum fajar; sunat dilakukan pada akhir malam."},
+{t:"o",s:2,q:"Surah yang dibaca pada rakaat pertama solat Witir ialah ...",o:["Al-A'la","Al-Ikhlas","An-Nas","Al-Falaq"],a:0,e:"Surah al-A'la dibaca pada rakaat pertama."},
+{t:"o",s:3,q:"Bilakah doa qunut Witir sunat dibaca?",o:["Malam pertama Ramadan","Mulai malam keenam belas Ramadan","Pada malam terakhir sahaja","Pada setiap rakaat"],a:1,e:"Qunut sunat dibaca ketika iktidal pada rakaat terakhir mulai malam ke-16 Ramadan."},
+{t:"o",s:3,q:"Antara berikut, yang manakah hikmah solat rawatib?",o:["Mengurangkan waktu tidur","Menampung kekurangan dalam solat fardhu","Menggantikan semua solat fardhu","Menghapuskan kewajipan puasa"],a:1,e:"Rawatib menampung kekurangan yang ada ketika solat fardhu."},
+{t:"i",s:3,q:"Solat sunat yang mengiringi solat fardhu disebut solat sunat ______.",a:["rawatib"],e:"Jawapan: rawatib."},
+{t:"i",s:3,q:"Solat sunat yang menghidupkan malam Ramadan ialah solat ______.",a:["tarawih","terawih"],e:"Jawapan: Tarawih."},
+{t:"i",s:3,q:"Solat yang dilaksanakan sebagai penutup solat malam ialah solat ______.",a:["witir"],e:"Jawapan: Witir."},
+{t:"i",s:3,q:"Rawatib yang dilakukan sebelum solat fardhu disebut ______.",a:["qabliah","qabliyyah"],e:"Jawapan: qabliah."},
+{t:"i",s:4,q:"Rawatib yang dilakukan selepas solat fardhu disebut ______.",a:["ba'diah","ba'diyah","ba diah","ba’diah"],e:"Jawapan: ba'diah."},
+{t:"i",s:4,q:"Dalam solat rawatib Subuh dan Isyak, surah al-Kafirun dibaca pada rakaat ______.",a:["pertama"],e:"Jawapan: pertama."},
+{t:"i",s:4,q:"Dalam solat rawatib Subuh dan Isyak, surah al-Ikhlas dibaca pada rakaat ______.",a:["kedua"],e:"Jawapan: kedua."},
+{t:"i",s:4,q:"Solat Tarawih dilakukan pada malam-malam bulan ______.",a:["ramadan","ramadhan"],e:"Jawapan: Ramadan."},
+{t:"i",s:4,q:"Doa qunut Witir sunat dibaca ketika ______ pada rakaat terakhir.",a:["iktidal"],e:"Jawapan: iktidal."},
+{t:"i",s:4,q:"Solat rawatib membantu menambah ______ ketika solat fardhu kerana mempersiapkan hati.",a:["khusyuk","kekhusyukan"],e:"Jawapan: khusyuk."}
+];
+// TAMPAL URL Web App Google Apps Script di antara tanda petik di bawah selepas deploy.
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyjsrYgNc_yi0n0gFfF9QaH34cDuOPGzPoqvI4tPp-8kS-LcriJoV8T1mbNFKU5-99B/exec";
+let studentName="",studentClass="",submitted=false;
+let index=0,score=0,answers=[],selected=null,locked=false;
+function beginFromForm(){
+ const n=document.getElementById('studentName').value.trim();
+ const c=document.getElementById('studentClass').value;
+ const notice=document.getElementById('setupNotice');
+ if(!n||!c){notice.className='feedback no';notice.textContent='Sila masukkan nama murid dan pilih kelas sebelum memulakan misi.';return}
+ studentName=n;studentClass=c;submitted=false;startGame();
+}
+function showRules(){document.getElementById('rules').classList.toggle('hidden')}
+function mapHTML(){return stations.map((s,i)=>{let done=answers.filter((a,j)=>questions[j].s===i&&a&&a.correct).length;let completed=answers.filter((a,j)=>questions[j].s===i&&a).length===s.end-s.start+1;let active=questions[index]&&questions[index].s===i;return `<div class="station ${completed?'done':''} ${active?'active':''} ${i>Math.max(0,questions[index]?.s||0)?'locked':''}"><div class="num">${completed?'✓':i+1}</div><h4>${s.icon} ${s.name}</h4><small>${completed?'Stesen selesai':s.desc}</small></div>`}).join('')}
+function renderMaps(){document.getElementById('homeMap').innerHTML=stations.map((s,i)=>`<div class="station ${i===0?'active':''}"><div class="num">${i+1}</div><h4>${s.icon} ${s.name}</h4><small>${s.desc}</small></div>`).join('');document.getElementById('gameMap').innerHTML=mapHTML()}
+function startGame(){document.getElementById('home').classList.add('hidden');document.getElementById('results').classList.add('hidden');document.getElementById('game').classList.remove('hidden');index=0;score=0;answers=[];selected=null;locked=false;renderMaps();renderQuestion();window.scrollTo({top:0,behavior:'smooth'})}
+function renderQuestion(){let q=questions[index],s=stations[q.s];selected=null;locked=false;document.getElementById('stationHeading').textContent=`${s.icon} Stesen ${q.s+1}: ${s.name}`;document.getElementById('scorePill').textContent=`Markah: ${score}`;document.getElementById('progressText').textContent=`Soalan ${index+1} daripada 30`;document.getElementById('progressPct').textContent=`${Math.round((index+1)/30*100)}%`;document.getElementById('progressBar').style.width=`${(index+1)/30*100}%`;document.getElementById('typeTag').textContent=q.t==='o'?'OBJEKTIF':'ISI TEMPAT KOSONG';let n=questions.slice(0,index+1).filter(x=>x.s===q.s).length,total=questions.filter(x=>x.s===q.s).length;document.getElementById('stationCount').textContent=`Stesen ${q.s+1} · Cabaran ${n}/${total}`;document.getElementById('questionText').textContent=q.q;let area=document.getElementById('answerArea');area.innerHTML='';if(q.t==='o'){let letters=['A','B','C','D'];let div=document.createElement('div');div.className='answers';q.o.forEach((v,i)=>{let b=document.createElement('button');b.className='answer';b.innerHTML=`<span class="letter">${letters[i]}</span><span>${v}</span>`;b.onclick=()=>{if(locked)return;selected=i;document.querySelectorAll('.answer').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');document.getElementById('checkBtn').disabled=false};div.appendChild(b)});area.appendChild(div)}else{let inp=document.createElement('input');inp.className='field';inp.id='blankAnswer';inp.placeholder='Taip jawapan anda di sini...';inp.autocomplete='off';inp.addEventListener('input',()=>{selected=inp.value.trim();document.getElementById('checkBtn').disabled=!selected});inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!document.getElementById('checkBtn').disabled)checkAnswer()});area.appendChild(inp);setTimeout(()=>inp.focus(),100)}document.getElementById('feedback').className='feedback hidden';document.getElementById('checkBtn').classList.remove('hidden');document.getElementById('checkBtn').disabled=true;document.getElementById('nextBtn').classList.add('hidden');renderMaps()}
+function normalize(s){return s.toLowerCase().trim().replace(/[’‘]/g,"'").replace(/\s+/g,' ')}
+function checkAnswer(){if(locked||selected===null||selected==='')return;let q=questions[index];let response=q.t==='o'?q.o[selected]:document.getElementById('blankAnswer').value.trim();let correct=q.t==='o'?selected===q.a:q.a.some(x=>normalize(x)===normalize(response));locked=true;if(correct)score++;answers[index]={response,correct};if(q.t==='o'){document.querySelectorAll('.answer').forEach((b,i)=>{b.disabled=true;if(i===q.a)b.classList.add('correct');if(i===selected&&i!==q.a)b.classList.add('wrong')})}else{document.getElementById('blankAnswer').disabled=true}let f=document.getElementById('feedback');f.className='feedback '+(correct?'ok':'no');f.innerHTML=`<strong>${correct?'✓ Tepat! +1 markah':'✦ Belum tepat'}</strong>${q.e}${!correct?`<br><span>Jawapan anda: ${response||'Tiada jawapan'}</span>`:''}`;document.getElementById('checkBtn').classList.add('hidden');document.getElementById('nextBtn').classList.remove('hidden');document.getElementById('nextBtn').textContent=index===29?'Buka Keputusan Akhir →':(index===questions[ index+1]?.s? 'Teruskan Misi →':'Soalan Seterusnya →');document.getElementById('scorePill').textContent=`Markah: ${score}`;renderMaps()}
+function nextQuestion(){if(!locked)return;if(index===29){showResults();return}let oldS=questions[index].s;index++;let newS=questions[index].s;if(newS!==oldS){let f=document.getElementById('feedback');f.className='feedback ok';f.innerHTML=`<strong>🎉 Stesen ${oldS+1} selesai!</strong>Anda membuka ${stations[newS].name}. Teruskan pengembaraan untuk mengumpul lebih banyak markah.`}renderQuestion();window.scrollTo({top:0,behavior:'smooth'})}
+async function showResults(){document.getElementById('game').classList.add('hidden');document.getElementById('results').classList.remove('hidden');let pct=Math.round(score/30*100);let rank=pct>=90?['🏆','Master Fiqah','Penguasaan cemerlang! Anda berjaya menakluki hampir semua cabaran.']:pct>=75?['🥇','Pakar Ibadah','Bagus. Semak jawapan yang salah untuk mengukuhkan penguasaan.']:pct>=50?['🧭','Penjelajah Fiqah','Anda sudah menguasai sebahagian isi. Ulang kaji stesen yang mencabar.']:['📘','Pelatih Fiqah','Baca semula nota P19 dan cuba lagi untuk meningkatkan markah.'];document.getElementById('medal').textContent=rank[0];document.getElementById('rankTitle').textContent=rank[1];document.getElementById('finalScore').textContent=`${score}/30`;document.getElementById('percentText').textContent=`${pct}% ketepatan`;document.getElementById('resultMessage').textContent=rank[2];document.getElementById('finalBar').style.width=pct+'%';document.getElementById('review').innerHTML=questions.map((q,i)=>{let a=answers[i]||{response:'Tiada jawapan',correct:false};let right=q.t==='o'?q.o[q.a]:q.a[0];return `<div class="reviewitem"><div style="display:flex;gap:8px"><strong style="color:${a.correct?'#7be2b0':'#ff8d8d'}">${a.correct?'✓':'✗'} ${i+1}.</strong><div><div>${q.q}</div><small>Jawapan betul: ${right}${!a.correct?`<br>Jawapan anda: ${a.response}`:''}</small></div></div></div>`}).join('');window.scrollTo({top:0,behavior:'smooth'}); submitResult(pct)}
+function submitResult(pct){
+ const status=document.getElementById('submitStatus');
+ status.className='feedback';status.textContent='Menghantar keputusan...';
+ if(!GOOGLE_SCRIPT_URL.startsWith('https://script.google.com/macros/s/')){
+   status.className='feedback no';status.innerHTML='<strong>Google Sheets belum disambungkan.</strong>Markah dipaparkan pada skrin sahaja. Masukkan URL Web App yang betul dan terbitkan semula permainan.';return;
+ }
+ if(submitted)return;
+ const payload={name:studentName,className:studentClass,score:score,total:30,percentage:pct,correct:score,wrong:30-score,answers:questions.map((q,i)=>({question:q.q,answer:(answers[i]||{}).response||'',correct:!!((answers[i]||{}).correct),correctAnswer:q.t==='o'?q.o[q.a]:q.a[0],station:stations[q.s].name}))};
+ try{
+   // Hantar melalui borang HTML ke iframe tersembunyi untuk mengelakkan kegagalan fetch/CORS.
+   let frame=document.getElementById('sheetsSubmitFrame');
+   if(!frame){frame=document.createElement('iframe');frame.name='sheetsSubmitFrame';frame.id='sheetsSubmitFrame';frame.style.display='none';document.body.appendChild(frame);}
+   let form=document.createElement('form');
+   form.method='POST';form.action=GOOGLE_SCRIPT_URL;form.target='sheetsSubmitFrame';form.style.display='none';
+   let field=document.createElement('input');field.type='hidden';field.name='payload';field.value=JSON.stringify(payload);form.appendChild(field);
+   document.body.appendChild(form);form.submit();form.remove();
+   submitted=true;
+   status.className='feedback';status.innerHTML='<strong>Keputusan sedang dihantar.</strong>Sila semak tab Rekod Markah dalam Google Sheets selepas beberapa saat. Jika rekod masih tiada, semak deployment Apps Script.';
+ }catch(err){
+   status.className='feedback no';status.innerHTML='<strong>Penghantaran tidak dapat dimulakan.</strong>Semak URL Web App dan sambungan internet. Markah masih dipaparkan pada skrin ini.';
+ }
+}
+function restart(){document.getElementById('results').classList.add('hidden');document.getElementById('home').classList.remove('hidden');renderMaps();window.scrollTo({top:0,behavior:'smooth'})}
+renderMaps();
+</script>
+</body>
+</html>
